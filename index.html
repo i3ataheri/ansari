@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استاد محمد انصاری | پروفایل رسمی</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Vazirmatn (Persian & Arabic) + Plus Jakarta Sans & Inter (English & Turkish) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        fa: ['Vazirmatn', 'sans-serif'],
+                        ar: ['Vazirmatn', 'sans-serif'],
+                        ltrHeading: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                        ltrBody: ['Inter', 'Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        emeraldAccent: {
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                        },
+                        goldAccent: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                        }
+                    },
+                    animation: {
+                        'float-slow': 'float 9s ease-in-out infinite',
+                        'float-delayed': 'float 11s ease-in-out 3s infinite',
+                        'spin-slow': 'spin 26s linear infinite',
+                        'pulse-soft': 'pulseSoft 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) scale(1)' },
+                            '50%': { transform: 'translateY(-18px) scale(1.03)' },
+                        },
+                        pulseSoft: {
+                            '0%, 100%': { opacity: '0.55' },
+                            '50%': { opacity: '0.9' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Dynamic Font Pairing Based on Active Language */
+        html[lang="fa"] body,
+        html[lang="ar"] body {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        html[lang="en"] body,
+        html[lang="tr"] body {
+            font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html[lang="en"] h1,
+        html[lang="en"] h2,
+        html[lang="en"] h3,
+        html[lang="tr"] h1,
+        html[lang="tr"] h2,
+        html[lang="tr"] h3 {
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+        }
+
+        /* Smooth Theme & Color Transitions */
+        body {
+            transition: background-color 0.45s cubic-bezier(0.22, 1, 0.36, 1), color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+            overflow-x: hidden;
+        }
+
+        /* Subtle Geometric Lattice Overlay */
+        .islamic-pattern {
+            background-image: radial-gradient(circle at 1px 1px, rgba(16, 185, 129, 0.12) 1px, transparent 0);
+            background-size: 32px 32px;
+        }
+        .dark .islamic-pattern {
+            background-image: radial-gradient(circle at 1px 1px, rgba(52, 211, 153, 0.08) 1px, transparent 0);
+            background-size: 32px 32px;
+        }
+
+        /* Glassmorphism Card Styling */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            box-shadow: 0 20px 45px -15px rgba(15, 23, 42, 0.08);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                        box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                        border-color 0.35s ease,
+                        background-color 0.45s ease;
+        }
+
+        .dark .glass-panel {
+            background: rgba(17, 24, 39, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 24px 50px -15px rgba(0, 0, 0, 0.55);
+        }
+
+        .glass-card-hover:hover {
+            transform: translateY(-6px);
+            border-color: rgba(16, 185, 129, 0.45);
+            box-shadow: 0 25px 50px -12px rgba(16, 185, 129, 0.15);
+        }
+
+        .dark .glass-card-hover:hover {
+            border-color: rgba(52, 211, 153, 0.4);
+            box-shadow: 0 25px 50px -12px rgba(16, 185, 129, 0.2);
+        }
+
+        /* Desktop-Only Sleek Hover Tooltip (Popup Underneath) */
+        .desktop-tooltip-wrapper {
+            position: relative;
+        }
+
+        .desktop-tooltip {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+        @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
+            .desktop-tooltip {
+                display: block;
+                position: absolute;
+                top: calc(100% + 10px);
+                left: 50%;
+                transform: translateX(-50%) translateY(-6px) scale(0.95);
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                white-space: nowrap;
+                z-index: 50;
+                padding: 6px 12px;
+                border-radius: 10px;
+                font-size: 0.75rem;
+                font-weight: 600;
+                letter-spacing: 0.01em;
+                background: rgba(15, 23, 42, 0.94);
+                color: #f8fafc;
+                border: 1px solid rgba(52, 211, 153, 0.35);
+                box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.35);
+                backdrop-filter: blur(8px);
+                transition: opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+                            transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+                            visibility 0.2s ease;
+            }
+
+            .dark .desktop-tooltip {
+                background: rgba(15, 23, 42, 0.96);
+                color: #ecfdf5;
+                border-color: rgba(52, 211, 153, 0.4);
+                box-shadow: 0 14px 28px -6px rgba(0, 0, 0, 0.65);
+            }
+
+            /* Top Arrow Pointer on Tooltip */
+            .desktop-tooltip::before {
+                content: '';
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                border-width: 5px;
+                border-style: solid;
+                border-color: transparent transparent rgba(15, 23, 42, 0.95) transparent;
+            }
+
+            .desktop-tooltip-wrapper:not(.tooltip-dismissed):hover .desktop-tooltip {
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(-50%) translateY(0) scale(1);
+            }
+        }
+
+        /* Language Switch Fade Transition */
+        .lang-fade {
+            transition: opacity 0.24s ease, transform 0.24s ease;
+        }
+        .lang-fade.switching {
+            opacity: 0;
+            transform: translateY(6px);
+        }
+
+        /* Staggered Entrance Reveal */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(16, 185, 129, 0.35);
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(16, 185, 129, 0.6);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-[#090d16] dark:text-slate-100 min-h-screen relative selection:bg-emerald-500/30 selection:text-emerald-700 dark:selection:text-emerald-300">
+
+    <!-- Ambient Background Layer -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute inset-0 islamic-pattern"></div>
+        <!-- Soft Gradient Orbs -->
+        <div class="absolute -top-28 -start-24 w-80 h-80 sm:w-[28rem] sm:h-[28rem] rounded-full bg-emerald-400/20 dark:bg-emerald-500/15 blur-3xl animate-float-slow"></div>
+        <div class="absolute top-1/2 -end-28 w-72 h-72 sm:w-[26rem] sm:h-[26rem] rounded-full bg-amber-300/20 dark:bg-amber-500/10 blur-3xl animate-float-delayed"></div>
+        <div class="absolute -bottom-32 start-1/3 w-80 h-80 rounded-full bg-teal-400/15 dark:bg-teal-500/10 blur-3xl animate-pulse-soft"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 flex flex-col min-h-screen">
+
+        <!-- Top Floating Header: Language Switcher & Icon-Only Theme Toggle -->
+        <header class="reveal-item relative z-30 flex items-center justify-between gap-3 mb-8 sm:mb-12">
+            <!-- Language Selector Pills (FA, AR, EN, TR) -->
+            <nav aria-label="Language Switcher" class="glass-panel rounded-2xl p-1.5 flex items-center gap-1 sm:gap-1.5">
+                <div class="desktop-tooltip-wrapper">
+                    <button type="button" data-lang="fa" class="lang-btn font-ltrHeading px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wider transition-all duration-300 cursor-pointer">
+                        FA
+                    </button>
+                    <span id="tooltip-lang-fa" class="desktop-tooltip">زبان فارسی</span>
+                </div>
+
+                <div class="desktop-tooltip-wrapper">
+                    <button type="button" data-lang="ar" class="lang-btn font-ltrHeading px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wider transition-all duration-300 cursor-pointer">
+                        AR
+                    </button>
+                    <span id="tooltip-lang-ar" class="desktop-tooltip">زبان عربی</span>
+                </div>
+
+                <div class="desktop-tooltip-wrapper">
+                    <button type="button" data-lang="en" class="lang-btn font-ltrHeading px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wider transition-all duration-300 cursor-pointer">
+                        EN
+                    </button>
+                    <span id="tooltip-lang-en" class="desktop-tooltip">زبان انگلیسی</span>
+                </div>
+
+                <div class="desktop-tooltip-wrapper">
+                    <button type="button" data-lang="tr" class="lang-btn font-ltrHeading px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wider transition-all duration-300 cursor-pointer">
+                        TR
+                    </button>
+                    <span id="tooltip-lang-tr" class="desktop-tooltip">زبان ترکی</span>
+                </div>
+            </nav>
+
+            <!-- Icon-Only Dark / Light Theme Toggle Button -->
+            <div class="desktop-tooltip-wrapper">
+                <button id="theme-toggle" type="button" aria-label="Toggle Theme" class="glass-panel rounded-2xl p-3 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:border-emerald-500/50 transition-all duration-300 cursor-pointer active:scale-95">
+                    <!-- Sun Icon (Visible in Dark Mode) -->
+                    <svg id="icon-sun" class="w-5 h-5 text-amber-400 hidden dark:block transition-transform duration-500 hover:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <!-- Moon Icon (Visible in Light Mode) -->
+                    <svg id="icon-moon" class="w-5 h-5 text-slate-700 block dark:hidden transition-transform duration-500 hover:-rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+                <span id="tooltip-theme" class="desktop-tooltip">تغییر حالت شب و روز</span>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-grow space-y-8 sm:space-y-12">
+
+            <!-- Hero Profile Card -->
+            <section class="reveal-item glass-panel rounded-3xl p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+                <!-- Decorative Corner Accent -->
+                <div class="absolute top-0 end-0 w-44 h-44 bg-gradient-to-bl from-emerald-500/15 via-transparent to-transparent rounded-bl-full pointer-events-none"></div>
+
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8 lg:gap-10">
+                    <!-- Profile Photo Frame -->
+                    <div class="relative shrink-0 group">
+                        <!-- Rotating Outer Geometric Ring -->
+                        <div class="absolute -inset-2.5 rounded-full border border-dashed border-emerald-500/45 dark:border-emerald-400/35 animate-spin-slow pointer-events-none"></div>
+
+                        <!-- Gradient Border Container -->
+                        <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-emerald-500 via-teal-600 to-amber-400/80 p-1 shadow-xl shadow-emerald-950/25">
+                            <div class="w-full h-full rounded-full bg-slate-900 overflow-hidden relative flex items-center justify-center">
+                                <!-- تصویر رسمی استاد محمد انصاری -->
+                                <img
+                                    id="profile-avatar"
+                                    src="https://scontent.fjed2-1.fna.fbcdn.net/v/t39.30808-6/494720796_1199364514979291_8057954642544009414_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx837x836&ctp=s837x836&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=HdvacGCnejAQ7kNvwFMdOkH&_nc_oc=AdrilE7B51cz_MYO2IUOerrk4V7PUgCT7Fo85WK2f500_3BH3TPusIenaWybYgLJsEMJ-fliHmBbWwc8BBwZZWl9&_nc_zt=23&_nc_ht=scontent.fjed2-1.fna&_nc_gid=m5QOwG8woTrCP8FhFbVvFw&_nc_ss=7b289&oh=00_AQQg_CCjasK-Ugyojz4KpSDBzX7KUfF3k38b3CGJ8o7XNQ&oe=6B08E48B"
+                                    alt="استاد محمد انصاری"
+                                    referrerpolicy="no-referrer"
+                                    onerror="this.style.display='none'; document.getElementById('avatar-fallback').classList.remove('hidden');"
+                                    class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                                />
+                                <!-- Fallback Monogram (م.ا) if external CDN token expires -->
+                                <div id="avatar-fallback" class="hidden w-full h-full rounded-full bg-gradient-to-br from-emerald-900 via-slate-900 to-teal-950 flex items-center justify-center text-emerald-300 font-extrabold text-2xl sm:text-3xl tracking-tight select-none">
+                                    م.ا
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile Details & Bio -->
+                    <div class="text-center md:text-start flex-1 space-y-4">
+                        <div class="space-y-3">
+                            <!-- Main Name Heading -->
+                            <h1 id="profile-name" class="lang-fade text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+                                استاد محمد انصاری
+                            </h1>
+
+                            <!-- Green Role Badge Placed Directly Below the Name -->
+                            <div>
+                                <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/12 dark:bg-emerald-500/15 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-xs sm:text-sm font-semibold shadow-sm shadow-emerald-500/5">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse"></span>
+                                    <span id="profile-subtitle" class="lang-fade">فعال مذهبی اهل سنت</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="h-px w-20 bg-gradient-to-r from-emerald-500 to-amber-400 mx-auto md:mx-0 rounded-full"></div>
+
+                        <!-- Two-Paragraph Professional Bio -->
+                        <div class="space-y-3.5 text-slate-600 dark:text-slate-300 text-sm sm:text-base lg:text-[17px] leading-relaxed sm:leading-loose">
+                            <p id="bio-p1" class="lang-fade">
+                                استاد محمد انصاری از فعالان و پژوهشگران اهل سنت است که فعالیت‌های خود را بر محور تبیین اسلامِ اصیل و صحیح، روشنگری دینی و پاسخ‌گویی مستند به شبهات اعتقادی و فکری متمرکز کرده است.
+                            </p>
+                            <p id="bio-p2" class="lang-fade">
+                                رویکرد ایشان در مباحث علمی و گفتگوهای عقیدتی، تکیه بر منابع معتبر، استدلال منطقی و زدودن برداشت‌های نادرست از آموزه‌های اسلامی برای ارتقای آگاهی مخاطبان است.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Areas of Activity Section (محورهای فعالیت) -->
+            <section class="space-y-5 sm:space-y-6">
+                <!-- Section Header -->
+                <div class="reveal-item flex items-center gap-3 px-1">
+                    <div class="w-2.5 h-7 rounded-full bg-gradient-to-b from-emerald-500 to-teal-600"></div>
+                    <h2 id="section-areas-title" class="lang-fade text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                        محورهای فعالیت
+                    </h2>
+                </div>
+
+                <!-- 3-Column Responsive Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+
+                    <!-- Card 1: شیعه‌شناسی -->
+                    <article class="reveal-item glass-panel glass-card-hover rounded-3xl p-6 sm:p-7 flex flex-col justify-between group" style="transition-delay: 80ms;">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/12 dark:bg-emerald-400/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-5 group-hover:scale-110 transition-transform duration-300">
+                                <!-- Book / Scholarly Research Icon -->
+                                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                </svg>
+                            </div>
+                            <h3 id="area1-title" class="lang-fade text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                                شیعه‌شناسی
+                            </h3>
+                            <p id="area1-desc" class="lang-fade text-sm sm:text-[15px] text-slate-600 dark:text-slate-300/90 leading-relaxed">
+                                تحلیل مبانی، عقاید و شبهات شیعه و ارائه پاسخ‌های مستند.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-200/60 dark:border-slate-800/80 flex items-center justify-between text-xs font-medium text-emerald-600 dark:text-emerald-400/80">
+                            <span>01</span>
+                            <span class="w-8 h-1 rounded-full bg-emerald-500/30 group-hover:w-14 group-hover:bg-emerald-500 transition-all duration-300"></span>
+                        </div>
+                    </article>
+
+                    <!-- Card 2: مقابله با الحاد -->
+                    <article class="reveal-item glass-panel glass-card-hover rounded-3xl p-6 sm:p-7 flex flex-col justify-between group" style="transition-delay: 160ms;">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-amber-500/12 dark:bg-amber-400/10 border border-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400 mb-5 group-hover:scale-110 transition-transform duration-300">
+                                <!-- Shield / Intellectual Defense Icon -->
+                                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <h3 id="area2-title" class="lang-fade text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2.5 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                                مقابله با الحاد
+                            </h3>
+                            <p id="area2-desc" class="lang-fade text-sm sm:text-[15px] text-slate-600 dark:text-slate-300/90 leading-relaxed">
+                                بررسی چالش‌های الحادی و تبیین اصول اعتقادی.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-200/60 dark:border-slate-800/80 flex items-center justify-between text-xs font-medium text-amber-600 dark:text-amber-400/80">
+                            <span>02</span>
+                            <span class="w-8 h-1 rounded-full bg-amber-500/30 group-hover:w-14 group-hover:bg-amber-500 transition-all duration-300"></span>
+                        </div>
+                    </article>
+
+                    <!-- Card 3: اصلاح برداشت‌ها -->
+                    <article class="reveal-item glass-panel glass-card-hover rounded-3xl p-6 sm:p-7 flex flex-col justify-between group" style="transition-delay: 240ms;">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-teal-500/12 dark:bg-teal-400/10 border border-teal-500/20 flex items-center justify-center text-teal-600 dark:text-teal-400 mb-5 group-hover:scale-110 transition-transform duration-300">
+                                <!-- Light / Clarity Compass Icon -->
+                                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                </svg>
+                            </div>
+                            <h3 id="area3-title" class="lang-fade text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2.5 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+                                اصلاح برداشت‌ها
+                            </h3>
+                            <p id="area3-desc" class="lang-fade text-sm sm:text-[15px] text-slate-600 dark:text-slate-300/90 leading-relaxed">
+                                تفکیک آموزه‌های درست اسلام از ادعاها، انحرافات و تفسیرهای نادرست.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-200/60 dark:border-slate-800/80 flex items-center justify-between text-xs font-medium text-teal-600 dark:text-teal-400/80">
+                            <span>03</span>
+                            <span class="w-8 h-1 rounded-full bg-teal-500/30 group-hover:w-14 group-hover:bg-teal-500 transition-all duration-300"></span>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer & Social Media Links Section -->
+        <footer class="reveal-item relative z-20 mt-12 sm:mt-16 pt-8">
+            <div class="glass-panel rounded-3xl p-6 sm:p-8 text-center space-y-6">
+                <div class="space-y-1.5">
+                    <h2 id="social-title" class="lang-fade text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+                        شبکه‌های اجتماعی و راه‌های ارتباطی
+                    </h2>
+                    <p id="social-subtitle" class="lang-fade text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+                        برای دنبال کردن مباحث، ویدیوها و نوشته‌ها از طریق صفحات رسمی همراه باشید
+                    </p>
+                </div>
+
+                <!-- Social Media Buttons: Icon-Only on Mobile (<768px), Icon + Localized Name + Hover Tooltip on Desktop (>=768px) -->
+                <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-3.5">
+
+                    <!-- YouTube (Personal Channel) -->
+                    <div class="desktop-tooltip-wrapper">
+                        <a href="https://www.youtube.com/mohammadansari" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
+                           class="group flex items-center justify-center gap-2.5 p-3.5 md:px-4 md:py-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 hover:border-red-500/50 hover:bg-red-500/10 text-slate-700 dark:text-slate-200 hover:text-red-600 dark:hover:text-red-400 transition-all duration-300 hover:-translate-y-1">
+                            <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                            <span id="social-label-youtube" class="lang-fade hidden md:inline text-sm font-semibold">یوتیوب</span>
+                        </a>
+                        <span id="tooltip-social-youtube" class="desktop-tooltip">کانال یوتیوب</span>
+                    </div>
+
+                    <!-- Nedai Haq TV (YouTube Channel) -->
+                    <div class="desktop-tooltip-wrapper">
+                        <a href="https://www.youtube.com/@nedaihaqtv" target="_blank" rel="noopener noreferrer" aria-label="Nedai Haq TV"
+                           class="group flex items-center justify-center gap-2.5 p-3.5 md:px-4 md:py-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 hover:border-emerald-500/50 hover:bg-emerald-500/10 text-slate-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all duration-300 hover:-translate-y-1">
+                            <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9">
+                                <rect x="2" y="7" width="20" height="15" rx="2.5" ry="2.5"></rect>
+                                <polyline points="17 2 12 7 7 2"></polyline>
+                                <polygon points="10 11.5 15.5 14.5 10 17.5 10 11.5" fill="currentColor" stroke="none"></polygon>
+                            </svg>
+                            <span id="social-label-nedaihaq" class="lang-fade hidden md:inline text-sm font-semibold">شبکه ندای حق</span>
+                        </a>
+                        <span id="tooltip-social-nedaihaq" class="desktop-tooltip">کانال یوتیوب ندای حق</span>
+                    </div>
+
+                    <!-- Instagram -->
+                    <div class="desktop-tooltip-wrapper">
+                        <a href="https://www.instagram.com/abusaeedansari" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                           class="group flex items-center justify-center gap-2.5 p-3.5 md:px-4 md:py-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 hover:border-pink-500/50 hover:bg-pink-500/10 text-slate-700 dark:text-slate-200 hover:text-pink-600 dark:hover:text-pink-400 transition-all duration-300 hover:-translate-y-1">
+                            <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            <span id="social-label-instagram" class="lang-fade hidden md:inline text-sm font-semibold">اینستاگرام</span>
+                        </a>
+                        <span id="tooltip-social-instagram" class="desktop-tooltip">صفحه اینستاگرام</span>
+                    </div>
+
+                    <!-- X (Twitter) -->
+                    <div class="desktop-tooltip-wrapper">
+                        <a href="https://x.com/abusaeedansari" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"
+                           class="group flex items-center justify-center gap-2.5 p-3.5 md:px-4 md:py-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 hover:border-slate-900/40 dark:hover:border-white/40 hover:bg-slate-500/10 text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white transition-all duration-300 hover:-translate-y-1">
+                            <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                            <span id="social-label-x" class="lang-fade hidden md:inline text-sm font-semibold">ایکس</span>
+                        </a>
+                        <span id="tooltip-social-x" class="desktop-tooltip">صفحه ایکس (توییتر)</span>
+                    </div>
+
+                    <!-- TikTok -->
+                    <div class="desktop-tooltip-wrapper">
+                        <a href="https://www.tiktok.com/@abusaeedansari" target="_blank" rel="noopener noreferrer" aria-label="TikTok"
+                           class="group flex items-center justify-center gap-2.5 p-3.5 md:px-4 md:py-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 hover:border-cyan-500/50 hover:bg-cyan-500/10 text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 transition-all duration-300 hover:-translate-y-1">
+                            <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                            <span id="social-label-tiktok" class="lang-fade hidden md:inline text-sm font-semibold">تیک‌تاک</span>
+                        </a>
+                        <span id="tooltip-social-tiktok" class="desktop-tooltip">صفحه تیک‌تاک</span>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="desktop-tooltip-wrapper">
+                        <a href="mailto:abusaeedansari@gmail.com" aria-label="Email"
+                           class="group flex items-center justify-center gap-2.5 p-3.5 md:px-4 md:py-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 hover:border-amber-500/50 hover:bg-amber-500/10 text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400 transition-all duration-300 hover:-translate-y-1">
+                            <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <span id="social-label-email" class="lang-fade hidden md:inline text-sm font-semibold">ایمیل</span>
+                        </a>
+                        <span id="tooltip-social-email" class="desktop-tooltip">abusaeedansari@gmail.com</span>
+                    </div>
+
+                </div>
+
+                <!-- Copyright Line -->
+                <div class="pt-4 border-t border-slate-200/60 dark:border-slate-800/80">
+                    <p id="footer-copyright" class="lang-fade text-xs text-slate-500 dark:text-slate-400">
+                        © تمامی حقوق برای صفحه رسمی استاد محمد انصاری محفوظ است.
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Multilingual Content & Interactive Logic -->
+    <script>
+        // Translations Dictionary (Persian, Arabic, English, Turkish)
+        const translations = {
+            fa: {
+                dir: 'rtl',
+                pageTitle: 'استاد محمد انصاری | پروفایل رسمی',
+                name: 'استاد محمد انصاری',
+                subtitle: 'فعال مذهبی اهل سنت',
+                bioP1: 'استاد محمد انصاری از فعالان و پژوهشگران اهل سنت است که فعالیت‌های خود را بر محور تبیین اسلامِ اصیل و صحیح، روشنگری دینی و پاسخ‌گویی مستند به شبهات اعتقادی و فکری متمرکز کرده است.',
+                bioP2: 'رویکرد ایشان در مباحث علمی و گفتگوهای عقیدتی، تکیه بر منابع معتبر، استدلال منطقی و زدودن برداشت‌های نادرست از آموزه‌های اسلامی برای ارتقای آگاهی مخاطبان است.',
+                areasTitle: 'محورهای فعالیت',
+                area1Title: 'شیعه‌شناسی',
+                area1Desc: 'تحلیل مبانی، عقاید و شبهات شیعه و ارائه پاسخ‌های مستند.',
+                area2Title: 'مقابله با الحاد',
+                area2Desc: 'بررسی چالش‌های الحادی و تبیین اصول اعتقادی.',
+                area3Title: 'اصلاح برداشت‌ها',
+                area3Desc: 'تفکیک آموزه‌های درست اسلام از ادعاها، انحرافات و تفسیرهای نادرست.',
+                socialTitle: 'شبکه‌های اجتماعی و راه‌های ارتباطی',
+                socialSubtitle: 'برای دنبال کردن مباحث، ویدیوها و نوشته‌ها از طریق صفحات رسمی همراه باشید',
+                copyright: '© تمامی حقوق برای صفحه رسمی استاد محمد انصاری محفوظ است.',
+                // Tooltips & Social Labels in Persian
+                tooltipLangFa: 'زبان فارسی',
+                tooltipLangAr: 'زبان عربی',
+                tooltipLangEn: 'زبان انگلیسی',
+                tooltipLangTr: 'زبان ترکی',
+                tooltipTheme: 'تغییر حالت شب و روز',
+                socialYoutube: 'یوتیوب',
+                tooltipYoutube: 'کانال یوتیوب',
+                socialNedaihaq: 'شبکه ندای حق',
+                tooltipNedaihaq: 'کانال یوتیوب ندای حق',
+                socialInstagram: 'اینستاگرام',
+                tooltipInstagram: 'صفحه اینستاگرام',
+                socialX: 'ایکس',
+                tooltipX: 'صفحه ایکس (توییتر)',
+                socialTiktok: 'تیک‌تاک',
+                tooltipTiktok: 'صفحه تیک‌تاک',
+                socialEmail: 'ایمیل',
+                tooltipEmail: 'ایمیل: abusaeedansari@gmail.com'
+            },
+            ar: {
+                dir: 'rtl',
+                pageTitle: 'الأستاذ محمد الأنصاري | الصفحة الرسمية',
+                name: 'الأستاذ محمد الأنصاري',
+                subtitle: 'ناشط ديني من أهل السنة',
+                bioP1: 'الأستاذ محمد الأنصاري ناشط وباحث من أهل السنة، يكرّس جهوده لبيان الإسلام الصحيح والأصيل، ونشر الوعي الديني، والرد العلمي الموثّق على الشبهات العقدية والفكرية.',
+                bioP2: 'يرتكز منهجه في الطرح العلمي والحوار العقدي على المصادر المعتبرة، والاستدلال المنطقي، وتصحيح المفاهيم المغلوطة المنسوبة إلى تعاليم الإسلام لتعزيز بصيرة المتابعين.',
+                areasTitle: 'مجالات النشاط',
+                area1Title: 'دراسة التشيع',
+                area1Desc: 'تحليل الأسس والعقائد والشبهات الشيعية وتقديم ردود علمية موثقة.',
+                area2Title: 'مواجهة الإلحاد',
+                area2Desc: 'دراسة التحديات الإلحادية وبيان الأصول العقدية وترسيخها.',
+                area3Title: 'تصحيح المفاهيم',
+                area3Desc: 'التمييز بين تعاليم الإسلام الصحيحة والادعاءات والانحرافات والتفسيرات الخاطئة.',
+                socialTitle: 'منصات التواصل الاجتماعي',
+                socialSubtitle: 'تابعوا المحاضرات والكتابات والمحتوى العلمي عبر الحسابات الرسمية',
+                copyright: '© جميع الحقوق محفوظة للصفحة الرسمية للأستاذ محمد الأنصاري.',
+                // Tooltips & Social Labels in Arabic
+                tooltipLangFa: 'اللغة الفارسية',
+                tooltipLangAr: 'اللغة العربية',
+                tooltipLangEn: 'اللغة الإنجليزية',
+                tooltipLangTr: 'اللغة التركية',
+                tooltipTheme: 'تبديل الوضع الليلي والنهاري',
+                socialYoutube: 'يوتيوب',
+                tooltipYoutube: 'قناة يوتيوب',
+                socialNedaihaq: 'قناة نداء الحق',
+                tooltipNedaihaq: 'قناة نداء الحق على يوتيوب',
+                socialInstagram: 'إنستغرام',
+                tooltipInstagram: 'صفحة إنستغرام',
+                socialX: 'إكس',
+                tooltipX: 'حساب إكس (تويتر)',
+                socialTiktok: 'تيك توك',
+                tooltipTiktok: 'حساب تيك توك',
+                socialEmail: 'البريد الإلكتروني',
+                tooltipEmail: 'البريد: abusaeedansari@gmail.com'
+            },
+            en: {
+                dir: 'ltr',
+                pageTitle: 'Ustad Mohammad Ansari | Official Profile',
+                name: 'Ustad Mohammad Ansari',
+                subtitle: 'Sunni Religious Activist',
+                bioP1: 'Ustad Mohammad Ansari is a Sunni scholar and activist dedicated to presenting authentic Islam, fostering religious clarity, and providing well-documented responses to theological and ideological misconceptions.',
+                bioP2: 'His scholarly approach relies on authoritative sources, sound reasoning, and clearing away distorted interpretations of Islamic teachings to empower audiences with accurate knowledge.',
+                areasTitle: 'Areas of Focus',
+                area1Title: 'Shia Studies',
+                area1Desc: 'Examining Shia foundations, beliefs, and arguments while providing well-documented scholarly responses.',
+                area2Title: 'Countering Atheism',
+                area2Desc: 'Addressing atheistic challenges and clarifying core theological principles.',
+                area3Title: 'Rectifying Misconceptions',
+                area3Desc: 'Distinguishing authentic Islamic teachings from false claims, deviations, and misinterpretations.',
+                socialTitle: 'Social Media & Official Channels',
+                socialSubtitle: 'Stay connected through official platforms for lectures, discussions, and articles',
+                copyright: '© All rights reserved. Official Profile of Ustad Mohammad Ansari.',
+                // Tooltips & Social Labels in English
+                tooltipLangFa: 'Persian Language',
+                tooltipLangAr: 'Arabic Language',
+                tooltipLangEn: 'English Language',
+                tooltipLangTr: 'Turkish Language',
+                tooltipTheme: 'Toggle Dark / Light Mode',
+                socialYoutube: 'YouTube',
+                tooltipYoutube: 'YouTube Channel',
+                socialNedaihaq: 'Nedai Haq TV',
+                tooltipNedaihaq: 'Nedai Haq TV on YouTube',
+                socialInstagram: 'Instagram',
+                tooltipInstagram: 'Instagram Page',
+                socialX: 'X (Twitter)',
+                tooltipX: 'X (Twitter) Profile',
+                socialTiktok: 'TikTok',
+                tooltipTiktok: 'TikTok Profile',
+                socialEmail: 'Email',
+                tooltipEmail: 'Email: abusaeedansari@gmail.com'
+            },
+            tr: {
+                dir: 'ltr',
+                pageTitle: 'Üstat Muhammed Ensari | Resmi Profil',
+                name: 'Üstat Muhammed Ensari',
+                subtitle: 'Ehl-i Sünnet Dini Aktivisti',
+                bioP1: 'Üstat Muhammed Ensari; sahih İslam’ı anlatmaya, dini bilinç oluşturmaya ve itikadi ile fikri şüphelere kaynaklara dayalı ilmi cevaplar sunmaya odaklanan bir Ehl-i Sünnet aktivisti ve araştırmacısıdır.',
+                bioP2: 'İlmi çalışmalarında ve fikri değerlendirmelerinde muteber kaynakları, tutarlı istidlali ve İslam öğretilerine dair yanlış algıların düzeltilmesini esas almaktadır.',
+                areasTitle: 'Faaliyet Alanları',
+                area1Title: 'Şia Araştırmaları',
+                area1Desc: 'Şia’nın temel esaslarını, inançlarını ve iddialarını analiz ederek belgelere dayalı ilmi cevaplar sunmak.',
+                area2Title: 'Ateizmle Mücadele',
+                area2Desc: 'Ateist akımların ortaya attığı fikri meydan okumaları incelemek ve temel itikadi esasları açıklamak.',
+                area3Title: 'Yanlış Algıların Düzeltilmesi',
+                area3Desc: 'İslam’ın sahih öğretilerini asılsız iddialardan, sapmalardan ve yanlış yorumlardan ayırt etmek.',
+                socialTitle: 'Sosyal Medya ve İletişim Kanalları',
+                socialSubtitle: 'Sohbetleri, videoları ve yazıları resmi hesaplar üzerinden takip edebilirsiniz',
+                copyright: '© Tüm hakları Üstat Muhammed Ensari resmi sayfasına aittir.',
+                // Tooltips & Social Labels in Turkish
+                tooltipLangFa: 'Farsça Dili',
+                tooltipLangAr: 'Arapça Dili',
+                tooltipLangEn: 'İngilizce Dili',
+                tooltipLangTr: 'Türkçe Dili',
+                tooltipTheme: 'Gece / Gündüz Modunu Değiştir',
+                socialYoutube: 'YouTube',
+                tooltipYoutube: 'YouTube Kanalı',
+                socialNedaihaq: 'Nedai Haq TV',
+                tooltipNedaihaq: 'Nedai Haq TV YouTube Kanalı',
+                socialInstagram: 'Instagram',
+                tooltipInstagram: 'Instagram Sayfası',
+                socialX: 'X (Twitter)',
+                tooltipX: 'X (Twitter) Hesabı',
+                socialTiktok: 'TikTok',
+                tooltipTiktok: 'TikTok Hesabı',
+                socialEmail: 'E-posta',
+                tooltipEmail: 'E-posta: abusaeedansari@gmail.com'
+            }
+        };
+
+        let currentLang = localStorage.getItem('preferredLang') || 'fa';
+
+        // Apply Selected Language with Smooth Fade Transition
+        function setLanguage(lang, animate = true) {
+            if (!translations[lang]) return;
+            currentLang = lang;
+            localStorage.setItem('preferredLang', lang);
+
+            const data = translations[lang];
+            const fadeElements = document.querySelectorAll('.lang-fade');
+
+            // Highlight active language button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('bg-emerald-600', 'text-white', 'shadow-md', 'shadow-emerald-600/25');
+                    btn.classList.remove('text-slate-600', 'dark:text-slate-300', 'hover:bg-slate-200/70', 'dark:hover:bg-slate-800/70');
+                } else {
+                    btn.classList.remove('bg-emerald-600', 'text-white', 'shadow-md', 'shadow-emerald-600/25');
+                    btn.classList.add('text-slate-600', 'dark:text-slate-300', 'hover:bg-slate-200/70', 'dark:hover:bg-slate-800/70');
+                }
+            });
+
+            const applyTexts = () => {
+                document.documentElement.lang = lang;
+                document.documentElement.dir = data.dir;
+                document.title = data.pageTitle;
+
+                // Profile & Bio
+                document.getElementById('profile-name').textContent = data.name;
+                document.getElementById('profile-avatar').alt = data.name;
+                document.getElementById('profile-subtitle').textContent = data.subtitle;
+                document.getElementById('bio-p1').textContent = data.bioP1;
+                document.getElementById('bio-p2').textContent = data.bioP2;
+
+                // Activity Areas
+                document.getElementById('section-areas-title').textContent = data.areasTitle;
+                document.getElementById('area1-title').textContent = data.area1Title;
+                document.getElementById('area1-desc').textContent = data.area1Desc;
+                document.getElementById('area2-title').textContent = data.area2Title;
+                document.getElementById('area2-desc').textContent = data.area2Desc;
+                document.getElementById('area3-title').textContent = data.area3Title;
+                document.getElementById('area3-desc').textContent = data.area3Desc;
+
+                // Social Section & Copyright
+                document.getElementById('social-title').textContent = data.socialTitle;
+                document.getElementById('social-subtitle').textContent = data.socialSubtitle;
+                document.getElementById('footer-copyright').textContent = data.copyright;
+
+                // Desktop Hover Tooltips (Localized to Active Language)
+                document.getElementById('tooltip-lang-fa').textContent = data.tooltipLangFa;
+                document.getElementById('tooltip-lang-ar').textContent = data.tooltipLangAr;
+                document.getElementById('tooltip-lang-en').textContent = data.tooltipLangEn;
+                document.getElementById('tooltip-lang-tr').textContent = data.tooltipLangTr;
+                document.getElementById('tooltip-theme').textContent = data.tooltipTheme;
+
+                // Social Media Desktop Labels & Hover Tooltips
+                document.getElementById('social-label-youtube').textContent = data.socialYoutube;
+                document.getElementById('tooltip-social-youtube').textContent = data.tooltipYoutube;
+                document.getElementById('social-label-nedaihaq').textContent = data.socialNedaihaq;
+                document.getElementById('tooltip-social-nedaihaq').textContent = data.tooltipNedaihaq;
+                document.getElementById('social-label-instagram').textContent = data.socialInstagram;
+                document.getElementById('tooltip-social-instagram').textContent = data.tooltipInstagram;
+                document.getElementById('social-label-x').textContent = data.socialX;
+                document.getElementById('tooltip-social-x').textContent = data.tooltipX;
+                document.getElementById('social-label-tiktok').textContent = data.socialTiktok;
+                document.getElementById('tooltip-social-tiktok').textContent = data.tooltipTiktok;
+                document.getElementById('social-label-email').textContent = data.socialEmail;
+                document.getElementById('tooltip-social-email').textContent = data.tooltipEmail;
+            };
+
+            if (animate) {
+                fadeElements.forEach(el => el.classList.add('switching'));
+                setTimeout(() => {
+                    applyTexts();
+                    fadeElements.forEach(el => el.classList.remove('switching'));
+                }, 200);
+            } else {
+                applyTexts();
+            }
+        }
+
+        // Dismiss Active Tooltip Immediately on Click/Tap & Reset on Mouseleave
+        function dismissTooltipOnClick(triggerEl) {
+            triggerEl.blur();
+            const wrapper = triggerEl.closest('.desktop-tooltip-wrapper');
+            if (wrapper) {
+                wrapper.classList.add('tooltip-dismissed');
+            }
+        }
+
+        document.querySelectorAll('.desktop-tooltip-wrapper').forEach(wrapper => {
+            wrapper.addEventListener('mouseleave', () => {
+                wrapper.classList.remove('tooltip-dismissed');
+            });
+        });
+
+        // Theme Initialization & Toggle Handler
+        function initTheme() {
+            const savedTheme = localStorage.getItem('preferredTheme');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+            } else {
+                document.documentElement.classList.add('dark');
+            }
+        }
+
+        document.getElementById('theme-toggle').addEventListener('click', (e) => {
+            dismissTooltipOnClick(e.currentTarget);
+            const htmlEl = document.documentElement;
+            htmlEl.classList.toggle('dark');
+            const isDark = htmlEl.classList.contains('dark');
+            localStorage.setItem('preferredTheme', isDark ? 'dark' : 'light');
+        });
+
+        // Language Button Click Listeners
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                dismissTooltipOnClick(e.currentTarget);
+                if (btn.dataset.lang !== currentLang) {
+                    setLanguage(btn.dataset.lang, true);
+                }
+            });
+        });
+
+        // Scroll & Load Entrance Animations
+        function initRevealAnimations() {
+            const revealItems = document.querySelectorAll('.reveal-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealItems.forEach((item, index) => {
+                setTimeout(() => {
+                    observer.observe(item);
+                }, index * 60);
+            });
+        }
+
+        // Initialize Page
+        window.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            setLanguage(currentLang, false);
+            initRevealAnimations();
+        });
+    </script>
+</body>
+</html>
