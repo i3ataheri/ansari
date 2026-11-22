@@ -5,6 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>استاد محمد انصاری | پروفایل رسمی</title>
 
+    <!-- جلوگیری فوری از چشمک سیاه هنگام بارگذاری در حالت تم روز -->
+    <script>
+        (function () {
+            try {
+                var savedTheme = localStorage.getItem('ansari_theme_v1');
+                var root = document.documentElement;
+                if (savedTheme === 'light') {
+                    root.classList.remove('dark');
+                    root.style.colorScheme = 'light';
+                    root.style.backgroundColor = '#f8fafc';
+                } else {
+                    root.classList.add('dark');
+                    root.style.colorScheme = 'dark';
+                    root.style.backgroundColor = '#090d16';
+                }
+            } catch (e) {}
+        })();
+    </script>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -44,8 +63,8 @@
                     },
                     keyframes: {
                         float: {
-                            '0%, 100%': { transform: 'translateY(0px) scale(1)' },
-                            '50%': { transform: 'translateY(-18px) scale(1.03)' },
+                            '0%, 100%': { transform: 'translate3d(0, 0px, 0) scale(1)' },
+                            '50%': { transform: 'translate3d(0, -16px, 0) scale(1.03)' },
                         },
                         pulseSoft: {
                             '0%, 100%': { opacity: '0.55' },
@@ -78,10 +97,15 @@
             font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
         }
 
-        /* Smooth Theme & Color Transitions */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Fast & Smooth Theme Transitions + Smooth Mobile Scroll */
         body {
-            transition: background-color 0.45s cubic-bezier(0.22, 1, 0.36, 1), color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: background-color 0.18s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.18s cubic-bezier(0.25, 0.8, 0.25, 1);
             overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
         }
 
         /* Subtle Geometric Lattice Overlay */
@@ -94,34 +118,46 @@
             background-size: 32px 32px;
         }
 
-        /* Glassmorphism Card Styling */
+        /* Glassmorphism Card Styling (Lightweight on Mobile for Smooth Scrolling) */
         .glass-panel {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.94);
             border: 1px solid rgba(15, 23, 42, 0.08);
-            box-shadow: 0 20px 45px -15px rgba(15, 23, 42, 0.08);
-            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                        box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                        border-color 0.35s ease,
-                        background-color 0.45s ease;
+            box-shadow: 0 18px 40px -15px rgba(15, 23, 42, 0.08);
+            transform: translate3d(0, 0, 0);
+            transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+                        box-shadow 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+                        border-color 0.2s ease,
+                        background-color 0.18s ease;
         }
 
         .dark .glass-panel {
-            background: rgba(17, 24, 39, 0.7);
+            background: rgba(17, 24, 39, 0.88);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 24px 50px -15px rgba(0, 0, 0, 0.55);
+            box-shadow: 0 22px 45px -15px rgba(0, 0, 0, 0.55);
         }
 
-        .glass-card-hover:hover {
-            transform: translateY(-6px);
-            border-color: rgba(16, 185, 129, 0.45);
-            box-shadow: 0 25px 50px -12px rgba(16, 185, 129, 0.15);
+        @media (min-width: 768px) {
+            .glass-panel {
+                background: rgba(255, 255, 255, 0.8);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+            }
+            .dark .glass-panel {
+                background: rgba(17, 24, 39, 0.72);
+            }
         }
 
-        .dark .glass-card-hover:hover {
-            border-color: rgba(52, 211, 153, 0.4);
-            box-shadow: 0 25px 50px -12px rgba(16, 185, 129, 0.2);
+        @media (hover: hover) and (pointer: fine) {
+            .glass-card-hover:hover {
+                transform: translate3d(0, -5px, 0);
+                border-color: rgba(16, 185, 129, 0.45);
+                box-shadow: 0 22px 45px -12px rgba(16, 185, 129, 0.16);
+            }
+
+            .dark .glass-card-hover:hover {
+                border-color: rgba(52, 211, 153, 0.4);
+                box-shadow: 0 22px 45px -12px rgba(16, 185, 129, 0.2);
+            }
         }
 
         /* Desktop-Only Sleek Hover Tooltip (Popup Underneath) */
@@ -133,14 +169,13 @@
             display: none;
         }
 
-        @media (min-width: 768px) {
         @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
             .desktop-tooltip {
                 display: block;
                 position: absolute;
                 top: calc(100% + 10px);
                 left: 50%;
-                transform: translateX(-50%) translateY(-6px) scale(0.95);
+                transform: translate3d(-50%, -6px, 0) scale(0.96);
                 opacity: 0;
                 visibility: hidden;
                 pointer-events: none;
@@ -151,18 +186,17 @@
                 font-size: 0.75rem;
                 font-weight: 600;
                 letter-spacing: 0.01em;
-                background: rgba(15, 23, 42, 0.94);
+                background: rgba(15, 23, 42, 0.95);
                 color: #f8fafc;
                 border: 1px solid rgba(52, 211, 153, 0.35);
                 box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.35);
-                backdrop-filter: blur(8px);
-                transition: opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1),
-                            transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
-                            visibility 0.2s ease;
+                transition: opacity 0.16s cubic-bezier(0.22, 1, 0.36, 1),
+                            transform 0.16s cubic-bezier(0.22, 1, 0.36, 1),
+                            visibility 0.16s ease;
             }
 
             .dark .desktop-tooltip {
-                background: rgba(15, 23, 42, 0.96);
+                background: rgba(15, 23, 42, 0.97);
                 color: #ecfdf5;
                 border-color: rgba(52, 211, 153, 0.4);
                 box-shadow: 0 14px 28px -6px rgba(0, 0, 0, 0.65);
@@ -177,34 +211,34 @@
                 transform: translateX(-50%);
                 border-width: 5px;
                 border-style: solid;
-                border-color: transparent transparent rgba(15, 23, 42, 0.95) transparent;
+                border-color: transparent transparent rgba(15, 23, 42, 0.96) transparent;
             }
 
             .desktop-tooltip-wrapper:not(.tooltip-dismissed):hover .desktop-tooltip {
                 opacity: 1;
                 visibility: visible;
-                transform: translateX(-50%) translateY(0) scale(1);
+                transform: translate3d(-50%, 0, 0) scale(1);
             }
         }
 
         /* Language Switch Fade Transition */
         .lang-fade {
-            transition: opacity 0.24s ease, transform 0.24s ease;
+            transition: opacity 0.18s ease, transform 0.18s ease;
         }
         .lang-fade.switching {
             opacity: 0;
-            transform: translateY(6px);
+            transform: translateY(4px);
         }
 
         /* Staggered Entrance Reveal */
         .reveal-item {
             opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translate3d(0, 18px, 0);
+            transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .reveal-item.is-visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translate3d(0, 0, 0);
         }
 
         /* Custom Scrollbar */
@@ -228,10 +262,10 @@
     <!-- Ambient Background Layer -->
     <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <div class="absolute inset-0 islamic-pattern"></div>
-        <!-- Soft Gradient Orbs -->
-        <div class="absolute -top-28 -start-24 w-80 h-80 sm:w-[28rem] sm:h-[28rem] rounded-full bg-emerald-400/20 dark:bg-emerald-500/15 blur-3xl animate-float-slow"></div>
-        <div class="absolute top-1/2 -end-28 w-72 h-72 sm:w-[26rem] sm:h-[26rem] rounded-full bg-amber-300/20 dark:bg-amber-500/10 blur-3xl animate-float-delayed"></div>
-        <div class="absolute -bottom-32 start-1/3 w-80 h-80 rounded-full bg-teal-400/15 dark:bg-teal-500/10 blur-3xl animate-pulse-soft"></div>
+        <!-- Soft Gradient Orbs (Lightweight blur on mobile for silky scroll) -->
+        <div class="absolute -top-28 -start-24 w-72 h-72 sm:w-[28rem] sm:h-[28rem] rounded-full bg-emerald-400/20 dark:bg-emerald-500/15 blur-2xl sm:blur-3xl animate-float-slow"></div>
+        <div class="hidden sm:block absolute top-1/2 -end-28 w-[26rem] h-[26rem] rounded-full bg-amber-300/20 dark:bg-amber-500/10 blur-3xl animate-float-delayed"></div>
+        <div class="hidden sm:block absolute -bottom-32 start-1/3 w-80 h-80 rounded-full bg-teal-400/15 dark:bg-teal-500/10 blur-3xl animate-pulse-soft"></div>
     </div>
 
     <!-- Main Container -->
@@ -242,28 +276,28 @@
             <!-- Language Selector Pills (FA, AR, EN, TR) -->
             <nav aria-label="Language Switcher" class="glass-panel rounded-2xl p-1.5 flex items-center gap-1 sm:gap-1.5">
                 <div class="desktop-tooltip-wrapper">
-                    <button type="button" data-lang="fa" class="lang-btn font-ltrHeading px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wider transition-all duration-300 cursor-pointer">
+                    <button type="button" data-lang="fa" class="lang-btn font-ltrHeading px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wider transition-all duration-200 cursor-pointer">
                         FA
                     </button>
                     <span id="tooltip-lang-fa" class="desktop-tooltip">زبان فارسی</span>
                 </div>
 
                 <div class="desktop-tooltip-wrapper">
-                    <button type="button" data-lang="ar" class="lang-btn font-ltrHeading px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wider transition-all duration-300 cursor-pointer">
+                    <button type="button" data-lang="ar" class="lang-btn font-ltrHeading px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wider transition-all duration-200 cursor-pointer">
                         AR
                     </button>
                     <span id="tooltip-lang-ar" class="desktop-tooltip">زبان عربی</span>
                 </div>
 
                 <div class="desktop-tooltip-wrapper">
-                    <button type="button" data-lang="en" class="lang-btn font-ltrHeading px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wider transition-all duration-300 cursor-pointer">
+                    <button type="button" data-lang="en" class="lang-btn font-ltrHeading px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wider transition-all duration-200 cursor-pointer">
                         EN
                     </button>
                     <span id="tooltip-lang-en" class="desktop-tooltip">زبان انگلیسی</span>
                 </div>
 
                 <div class="desktop-tooltip-wrapper">
-                    <button type="button" data-lang="tr" class="lang-btn font-ltrHeading px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wider transition-all duration-300 cursor-pointer">
+                    <button type="button" data-lang="tr" class="lang-btn font-ltrHeading px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wider transition-all duration-200 cursor-pointer">
                         TR
                     </button>
                     <span id="tooltip-lang-tr" class="desktop-tooltip">زبان ترکی</span>
@@ -272,13 +306,13 @@
 
             <!-- Icon-Only Dark / Light Theme Toggle Button -->
             <div class="desktop-tooltip-wrapper">
-                <button id="theme-toggle" type="button" aria-label="Toggle Theme" class="glass-panel rounded-2xl p-3 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:border-emerald-500/50 transition-all duration-300 cursor-pointer active:scale-95">
+                <button id="theme-toggle" type="button" aria-label="Toggle Theme" class="glass-panel rounded-2xl p-3 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:border-emerald-500/50 transition-all duration-200 cursor-pointer active:scale-95">
                     <!-- Sun Icon (Visible in Dark Mode) -->
-                    <svg id="icon-sun" class="w-5 h-5 text-amber-400 hidden dark:block transition-transform duration-500 hover:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <svg id="icon-sun" class="w-5 h-5 text-amber-400 hidden dark:block transition-transform duration-300 hover:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                     </svg>
                     <!-- Moon Icon (Visible in Light Mode) -->
-                    <svg id="icon-moon" class="w-5 h-5 text-slate-700 block dark:hidden transition-transform duration-500 hover:-rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <svg id="icon-moon" class="w-5 h-5 text-slate-700 block dark:hidden transition-transform duration-300 hover:-rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                     </svg>
                 </button>
@@ -310,7 +344,7 @@
                                     alt="استاد محمد انصاری"
                                     referrerpolicy="no-referrer"
                                     onerror="this.style.display='none'; document.getElementById('avatar-fallback').classList.remove('hidden');"
-                                    class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                                    class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
                                 />
                                 <!-- Fallback Monogram (م.ا) if external CDN token expires -->
                                 <div id="avatar-fallback" class="hidden w-full h-full rounded-full bg-gradient-to-br from-emerald-900 via-slate-900 to-teal-950 flex items-center justify-center text-emerald-300 font-extrabold text-2xl sm:text-3xl tracking-tight select-none">
@@ -367,9 +401,9 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
 
                     <!-- Card 1: شیعه‌شناسی -->
-                    <article class="reveal-item glass-panel glass-card-hover rounded-3xl p-6 sm:p-7 flex flex-col justify-between group" style="transition-delay: 80ms;">
+                    <article class="reveal-item glass-panel glass-card-hover rounded-3xl p-6 sm:p-7 flex flex-col justify-between group" style="transition-delay: 60ms;">
                         <div>
-                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/12 dark:bg-emerald-400/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-5 group-hover:scale-110 transition-transform duration-300">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/12 dark:bg-emerald-400/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-5 group-hover:scale-110 transition-transform duration-200">
                                 <!-- Book / Scholarly Research Icon -->
                                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -384,14 +418,14 @@
                         </div>
                         <div class="mt-6 pt-4 border-t border-slate-200/60 dark:border-slate-800/80 flex items-center justify-between text-xs font-medium text-emerald-600 dark:text-emerald-400/80">
                             <span>01</span>
-                            <span class="w-8 h-1 rounded-full bg-emerald-500/30 group-hover:w-14 group-hover:bg-emerald-500 transition-all duration-300"></span>
+                            <span class="w-8 h-1 rounded-full bg-emerald-500/30 group-hover:w-14 group-hover:bg-emerald-500 transition-all duration-200"></span>
                         </div>
                     </article>
 
                     <!-- Card 2: مقابله با الحاد -->
-                    <article class="reveal-item glass-panel glass-card-hover rounded-3xl p-6 sm:p-7 flex flex-col justify-between group" style="transition-delay: 160ms;">
+                    <article class="reveal-item glass-panel glass-card-hover rounded-3xl p-6 sm:p-7 flex flex-col justify-between group" style="transition-delay: 120ms;">
                         <div>
-                            <div class="w-12 h-12 rounded-2xl bg-amber-500/12 dark:bg-amber-400/10 border border-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400 mb-5 group-hover:scale-110 transition-transform duration-300">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-500/12 dark:bg-amber-400/10 border border-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400 mb-5 group-hover:scale-110 transition-transform duration-200">
                                 <!-- Shield / Intellectual Defense Icon -->
                                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -406,14 +440,14 @@
                         </div>
                         <div class="mt-6 pt-4 border-t border-slate-200/60 dark:border-slate-800/80 flex items-center justify-between text-xs font-medium text-amber-600 dark:text-amber-400/80">
                             <span>02</span>
-                            <span class="w-8 h-1 rounded-full bg-amber-500/30 group-hover:w-14 group-hover:bg-amber-500 transition-all duration-300"></span>
+                            <span class="w-8 h-1 rounded-full bg-amber-500/30 group-hover:w-14 group-hover:bg-amber-500 transition-all duration-200"></span>
                         </div>
                     </article>
 
                     <!-- Card 3: اصلاح برداشت‌ها -->
-                    <article class="reveal-item glass-panel glass-card-hover rounded-3xl p-6 sm:p-7 flex flex-col justify-between group" style="transition-delay: 240ms;">
+                    <article class="reveal-item glass-panel glass-card-hover rounded-3xl p-6 sm:p-7 flex flex-col justify-between group" style="transition-delay: 180ms;">
                         <div>
-                            <div class="w-12 h-12 rounded-2xl bg-teal-500/12 dark:bg-teal-400/10 border border-teal-500/20 flex items-center justify-center text-teal-600 dark:text-teal-400 mb-5 group-hover:scale-110 transition-transform duration-300">
+                            <div class="w-12 h-12 rounded-2xl bg-teal-500/12 dark:bg-teal-400/10 border border-teal-500/20 flex items-center justify-center text-teal-600 dark:text-teal-400 mb-5 group-hover:scale-110 transition-transform duration-200">
                                 <!-- Light / Clarity Compass Icon -->
                                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -428,7 +462,7 @@
                         </div>
                         <div class="mt-6 pt-4 border-t border-slate-200/60 dark:border-slate-800/80 flex items-center justify-between text-xs font-medium text-teal-600 dark:text-teal-400/80">
                             <span>03</span>
-                            <span class="w-8 h-1 rounded-full bg-teal-500/30 group-hover:w-14 group-hover:bg-teal-500 transition-all duration-300"></span>
+                            <span class="w-8 h-1 rounded-full bg-teal-500/30 group-hover:w-14 group-hover:bg-teal-500 transition-all duration-200"></span>
                         </div>
                     </article>
 
@@ -455,7 +489,7 @@
                     <!-- YouTube (Personal Channel) -->
                     <div class="desktop-tooltip-wrapper">
                         <a href="https://www.youtube.com/mohammadansari" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
-                           class="group flex items-center justify-center gap-2.5 p-3.5 md:px-4 md:py-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 hover:border-red-500/50 hover:bg-red-500/10 text-slate-700 dark:text-slate-200 hover:text-red-600 dark:hover:text-red-400 transition-all duration-300 hover:-translate-y-1">
+                           class="group flex items-center justify-center gap-2.5 p-3.5 md:px-4 md:py-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 hover:border-red-500/50 hover:bg-red-500/10 text-slate-700 dark:text-slate-200 hover:text-red-600 dark:hover:text-red-400 transition-all duration-200 hover:-translate-y-1">
                             <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24">
                                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                             </svg>
@@ -467,7 +501,7 @@
                     <!-- Nedai Haq TV (YouTube Channel) -->
                     <div class="desktop-tooltip-wrapper">
                         <a href="https://www.youtube.com/@nedaihaqtv" target="_blank" rel="noopener noreferrer" aria-label="Nedai Haq TV"
-                           class="group flex items-center justify-center gap-2.5 p-3.5 md:px-4 md:py-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 hover:border-emerald-500/50 hover:bg-emerald-500/10 text-slate-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all duration-300 hover:-translate-y-1">
+                           class="group flex items-center justify-center gap-2.5 p-3.5 md:px-4 md:py-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 hover:border-emerald-500/50 hover:bg-emerald-500/10 text-slate-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all duration-200 hover:-translate-y-1">
                             <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9">
                                 <rect x="2" y="7" width="20" height="15" rx="2.5" ry="2.5"></rect>
                                 <polyline points="17 2 12 7 7 2"></polyline>
@@ -481,7 +515,7 @@
                     <!-- Instagram -->
                     <div class="desktop-tooltip-wrapper">
                         <a href="https://www.instagram.com/abusaeedansari" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
-                           class="group flex items-center justify-center gap-2.5 p-3.5 md:px-4 md:py-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 hover:border-pink-500/50 hover:bg-pink-500/10 text-slate-700 dark:text-slate-200 hover:text-pink-600 dark:hover:text-pink-400 transition-all duration-300 hover:-translate-y-1">
+                           class="group flex items-center justify-center gap-2.5 p-3.5 md:px-4 md:py-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 hover:border-pink-500/50 hover:bg-pink-500/10 text-slate-700 dark:text-slate-200 hover:text-pink-600 dark:hover:text-pink-400 transition-all duration-200 hover:-translate-y-1">
                             <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24">
                                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                             </svg>
@@ -493,19 +527,19 @@
                     <!-- X (Twitter) -->
                     <div class="desktop-tooltip-wrapper">
                         <a href="https://x.com/abusaeedansari" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"
-                           class="group flex items-center justify-center gap-2.5 p-3.5 md:px-4 md:py-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 hover:border-slate-900/40 dark:hover:border-white/40 hover:bg-slate-500/10 text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white transition-all duration-300 hover:-translate-y-1">
+                           class="group flex items-center justify-center gap-2.5 p-3.5 md:px-4 md:py-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 hover:border-slate-900/40 dark:hover:border-white/40 hover:bg-slate-500/10 text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white transition-all duration-200 hover:-translate-y-1">
                             <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24">
                                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                             </svg>
                             <span id="social-label-x" class="lang-fade hidden md:inline text-sm font-semibold">ایکس</span>
                         </a>
-                        <span id="tooltip-social-x" class="desktop-tooltip">صفحه ایکس (توییتر)</span>
+                        <span id="tooltip-social-x" class="desktop-tooltip">حساب ایکس (توییتر)</span>
                     </div>
 
                     <!-- TikTok -->
                     <div class="desktop-tooltip-wrapper">
                         <a href="https://www.tiktok.com/@abusaeedansari" target="_blank" rel="noopener noreferrer" aria-label="TikTok"
-                           class="group flex items-center justify-center gap-2.5 p-3.5 md:px-4 md:py-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 hover:border-cyan-500/50 hover:bg-cyan-500/10 text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 transition-all duration-300 hover:-translate-y-1">
+                           class="group flex items-center justify-center gap-2.5 p-3.5 md:px-4 md:py-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 hover:border-cyan-500/50 hover:bg-cyan-500/10 text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 transition-all duration-200 hover:-translate-y-1">
                             <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24">
                                 <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
                             </svg>
@@ -517,35 +551,27 @@
                     <!-- Email -->
                     <div class="desktop-tooltip-wrapper">
                         <a href="mailto:abusaeedansari@gmail.com" aria-label="Email"
-                           class="group flex items-center justify-center gap-2.5 p-3.5 md:px-4 md:py-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 hover:border-amber-500/50 hover:bg-amber-500/10 text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400 transition-all duration-300 hover:-translate-y-1">
+                           class="group flex items-center justify-center gap-2.5 p-3.5 md:px-4 md:py-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 hover:border-amber-500/50 hover:bg-amber-500/10 text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400 transition-all duration-200 hover:-translate-y-1">
                             <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
                             <span id="social-label-email" class="lang-fade hidden md:inline text-sm font-semibold">ایمیل</span>
                         </a>
-                        <span id="tooltip-social-email" class="desktop-tooltip">abusaeedansari@gmail.com</span>
+                        <span id="tooltip-social-email" class="desktop-tooltip">ارسال ایمیل</span>
                     </div>
 
-                </div>
-
-                <!-- Copyright Line -->
-                <div class="pt-4 border-t border-slate-200/60 dark:border-slate-800/80">
-                    <p id="footer-copyright" class="lang-fade text-xs text-slate-500 dark:text-slate-400">
-                        © تمامی حقوق برای صفحه رسمی استاد محمد انصاری محفوظ است.
-                    </p>
                 </div>
             </div>
         </footer>
 
     </div>
 
-    <!-- Multilingual Content & Interactive Logic -->
+    <!-- Localization, Theme & Animation Script -->
     <script>
-        // Translations Dictionary (Persian, Arabic, English, Turkish)
         const translations = {
             fa: {
                 dir: 'rtl',
-                pageTitle: 'استاد محمد انصاری | پروفایل رسمی',
+                title: 'استاد محمد انصاری | پروفایل رسمی',
                 name: 'استاد محمد انصاری',
                 subtitle: 'فعال مذهبی اهل سنت',
                 bioP1: 'استاد محمد انصاری از فعالان و پژوهشگران اهل سنت است که فعالیت‌های خود را بر محور تبیین اسلامِ اصیل و صحیح، روشنگری دینی و پاسخ‌گویی مستند به شبهات اعتقادی و فکری متمرکز کرده است.',
@@ -559,285 +585,300 @@
                 area3Desc: 'تفکیک آموزه‌های درست اسلام از ادعاها، انحرافات و تفسیرهای نادرست.',
                 socialTitle: 'شبکه‌های اجتماعی و راه‌های ارتباطی',
                 socialSubtitle: 'برای دنبال کردن مباحث، ویدیوها و نوشته‌ها از طریق صفحات رسمی همراه باشید',
-                copyright: '© تمامی حقوق برای صفحه رسمی استاد محمد انصاری محفوظ است.',
-                // Tooltips & Social Labels in Persian
-                tooltipLangFa: 'زبان فارسی',
-                tooltipLangAr: 'زبان عربی',
-                tooltipLangEn: 'زبان انگلیسی',
-                tooltipLangTr: 'زبان ترکی',
-                tooltipTheme: 'تغییر حالت شب و روز',
-                socialYoutube: 'یوتیوب',
-                tooltipYoutube: 'کانال یوتیوب',
-                socialNedaihaq: 'شبکه ندای حق',
-                tooltipNedaihaq: 'کانال یوتیوب ندای حق',
-                socialInstagram: 'اینستاگرام',
-                tooltipInstagram: 'صفحه اینستاگرام',
-                socialX: 'ایکس',
-                tooltipX: 'صفحه ایکس (توییتر)',
-                socialTiktok: 'تیک‌تاک',
-                tooltipTiktok: 'صفحه تیک‌تاک',
-                socialEmail: 'ایمیل',
-                tooltipEmail: 'ایمیل: abusaeedansari@gmail.com'
+                socials: {
+                    youtube: 'یوتیوب',
+                    nedaihaq: 'شبکه ندای حق',
+                    instagram: 'اینستاگرام',
+                    x: 'ایکس',
+                    tiktok: 'تیک‌تاک',
+                    email: 'ایمیل'
+                },
+                tooltips: {
+                    langFa: 'زبان فارسی',
+                    langAr: 'زبان عربی',
+                    langEn: 'زبان انگلیسی',
+                    langTr: 'زبان ترکی',
+                    themeToLight: 'تغییر به حالت روز',
+                    themeToDark: 'تغییر به حالت شب',
+                    socYoutube: 'کانال یوتیوب',
+                    socNedaihaq: 'کانال یوتیوب ندای حق',
+                    socInstagram: 'صفحه اینستاگرام',
+                    socX: 'حساب ایکس (توییتر)',
+                    socTiktok: 'صفحه تیک‌تاک',
+                    socEmail: 'ارسال ایمیل'
+                }
             },
             ar: {
                 dir: 'rtl',
-                pageTitle: 'الأستاذ محمد الأنصاري | الصفحة الرسمية',
+                title: 'الأستاذ محمد الأنصاري | الملف الرسمي',
                 name: 'الأستاذ محمد الأنصاري',
                 subtitle: 'ناشط ديني من أهل السنة',
-                bioP1: 'الأستاذ محمد الأنصاري ناشط وباحث من أهل السنة، يكرّس جهوده لبيان الإسلام الصحيح والأصيل، ونشر الوعي الديني، والرد العلمي الموثّق على الشبهات العقدية والفكرية.',
-                bioP2: 'يرتكز منهجه في الطرح العلمي والحوار العقدي على المصادر المعتبرة، والاستدلال المنطقي، وتصحيح المفاهيم المغلوطة المنسوبة إلى تعاليم الإسلام لتعزيز بصيرة المتابعين.',
+                bioP1: 'الأستاذ محمد الأنصاري من الناشطين والباحثين من أهل السنة الذين يركزون جهودهم على بيان الإسلام الصحيح والأصيل، والتوعية الدينية، والرد الموثق على الشبهات العقدية والفكرية.',
+                bioP2: 'يعتمد منهجه في الطروحات العلمية والحوارات العقدية على المصادر المعتبرة، والاستدلال المنطقي، وتصحيح المفاهيم المغلوطة عن تعاليم الإسلام لتعزيز وعي المتابعين.',
                 areasTitle: 'مجالات النشاط',
                 area1Title: 'دراسة التشيع',
-                area1Desc: 'تحليل الأسس والعقائد والشبهات الشيعية وتقديم ردود علمية موثقة.',
+                area1Desc: 'تحليل أصول ومعتقدات وشبهات الشيعة وتقديم الردود العلمية الموثقة.',
                 area2Title: 'مواجهة الإلحاد',
-                area2Desc: 'دراسة التحديات الإلحادية وبيان الأصول العقدية وترسيخها.',
+                area2Desc: 'مناقشة التحديات الإلحادية وبيان أصول العقيدة الإسلامية.',
                 area3Title: 'تصحيح المفاهيم',
-                area3Desc: 'التمييز بين تعاليم الإسلام الصحيحة والادعاءات والانحرافات والتفسيرات الخاطئة.',
-                socialTitle: 'منصات التواصل الاجتماعي',
-                socialSubtitle: 'تابعوا المحاضرات والكتابات والمحتوى العلمي عبر الحسابات الرسمية',
-                copyright: '© جميع الحقوق محفوظة للصفحة الرسمية للأستاذ محمد الأنصاري.',
-                // Tooltips & Social Labels in Arabic
-                tooltipLangFa: 'اللغة الفارسية',
-                tooltipLangAr: 'اللغة العربية',
-                tooltipLangEn: 'اللغة الإنجليزية',
-                tooltipLangTr: 'اللغة التركية',
-                tooltipTheme: 'تبديل الوضع الليلي والنهاري',
-                socialYoutube: 'يوتيوب',
-                tooltipYoutube: 'قناة يوتيوب',
-                socialNedaihaq: 'قناة نداء الحق',
-                tooltipNedaihaq: 'قناة نداء الحق على يوتيوب',
-                socialInstagram: 'إنستغرام',
-                tooltipInstagram: 'صفحة إنستغرام',
-                socialX: 'إكس',
-                tooltipX: 'حساب إكس (تويتر)',
-                socialTiktok: 'تيك توك',
-                tooltipTiktok: 'حساب تيك توك',
-                socialEmail: 'البريد الإلكتروني',
-                tooltipEmail: 'البريد: abusaeedansari@gmail.com'
+                area3Desc: 'تمييز تعاليم الإسلام الصحيحة عن الادعاءات والانحرافات والتفسيرات الخاطئة.',
+                socialTitle: 'منصات التواصل الاجتماعي ووسائل الاتصال',
+                socialSubtitle: 'تابعوا الطروحات والمرئيات والمقالات عبر الحسابات الرسمية',
+                socials: {
+                    youtube: 'يوتيوب',
+                    nedaihaq: 'قناة نداء الحق',
+                    instagram: 'إنستغرام',
+                    x: 'إكس',
+                    tiktok: 'تيك توك',
+                    email: 'البريد الإلكتروني'
+                },
+                tooltips: {
+                    langFa: 'اللغة الفارسية',
+                    langAr: 'اللغة العربية',
+                    langEn: 'اللغة الإنجليزية',
+                    langTr: 'اللغة التركية',
+                    themeToLight: 'التبديل إلى الوضع النهاري',
+                    themeToDark: 'التبديل إلى الوضع الليلي',
+                    socYoutube: 'قناة يوتيوب',
+                    socNedaihaq: 'قناة نداء الحق على يوتيوب',
+                    socInstagram: 'حساب إنستغرام',
+                    socX: 'حساب إكس (تويتر)',
+                    socTiktok: 'حساب تيك توك',
+                    socEmail: 'إرسال بريد إلكتروني'
+                }
             },
             en: {
                 dir: 'ltr',
-                pageTitle: 'Ustad Mohammad Ansari | Official Profile',
-                name: 'Ustad Mohammad Ansari',
+                title: 'Ustadh Mohammad Ansari | Official Profile',
+                name: 'Ustadh Mohammad Ansari',
                 subtitle: 'Sunni Religious Activist',
-                bioP1: 'Ustad Mohammad Ansari is a Sunni scholar and activist dedicated to presenting authentic Islam, fostering religious clarity, and providing well-documented responses to theological and ideological misconceptions.',
-                bioP2: 'His scholarly approach relies on authoritative sources, sound reasoning, and clearing away distorted interpretations of Islamic teachings to empower audiences with accurate knowledge.',
+                bioP1: 'Ustadh Mohammad Ansari is a Sunni religious activist and researcher dedicated to presenting authentic and sound Islam, fostering religious clarity, and offering well-documented responses to doctrinal and intellectual doubts.',
+                bioP2: 'His approach in scholarly discussions and theological discourse is grounded in authoritative sources, logical reasoning, and clearing misconceptions around Islamic teachings to elevate public awareness.',
                 areasTitle: 'Areas of Focus',
-                area1Title: 'Shia Studies',
-                area1Desc: 'Examining Shia foundations, beliefs, and arguments while providing well-documented scholarly responses.',
+                area1Title: 'Shi’ism Studies',
+                area1Desc: 'Analyzing Shia doctrines, beliefs, and arguments with documented, evidence-based responses.',
                 area2Title: 'Countering Atheism',
-                area2Desc: 'Addressing atheistic challenges and clarifying core theological principles.',
-                area3Title: 'Rectifying Misconceptions',
-                area3Desc: 'Distinguishing authentic Islamic teachings from false claims, deviations, and misinterpretations.',
-                socialTitle: 'Social Media & Official Channels',
-                socialSubtitle: 'Stay connected through official platforms for lectures, discussions, and articles',
-                copyright: '© All rights reserved. Official Profile of Ustad Mohammad Ansari.',
-                // Tooltips & Social Labels in English
-                tooltipLangFa: 'Persian Language',
-                tooltipLangAr: 'Arabic Language',
-                tooltipLangEn: 'English Language',
-                tooltipLangTr: 'Turkish Language',
-                tooltipTheme: 'Toggle Dark / Light Mode',
-                socialYoutube: 'YouTube',
-                tooltipYoutube: 'YouTube Channel',
-                socialNedaihaq: 'Nedai Haq TV',
-                tooltipNedaihaq: 'Nedai Haq TV on YouTube',
-                socialInstagram: 'Instagram',
-                tooltipInstagram: 'Instagram Page',
-                socialX: 'X (Twitter)',
-                tooltipX: 'X (Twitter) Profile',
-                socialTiktok: 'TikTok',
-                tooltipTiktok: 'TikTok Profile',
-                socialEmail: 'Email',
-                tooltipEmail: 'Email: abusaeedansari@gmail.com'
+                area2Desc: 'Addressing contemporary atheistic challenges and clarifying core Islamic theology.',
+                area3Title: 'Clarifying Misconceptions',
+                area3Desc: 'Distinguishing authentic Islamic teachings from false claims, distortions, and misinterpretations.',
+                socialTitle: 'Social Media & Contact Channels',
+                socialSubtitle: 'Follow discussions, videos, and writings through the official channels',
+                socials: {
+                    youtube: 'YouTube',
+                    nedaihaq: 'Nedai Haq TV',
+                    instagram: 'Instagram',
+                    x: 'X (Twitter)',
+                    tiktok: 'TikTok',
+                    email: 'Email'
+                },
+                tooltips: {
+                    langFa: 'Persian Language',
+                    langAr: 'Arabic Language',
+                    langEn: 'English Language',
+                    langTr: 'Turkish Language',
+                    themeToLight: 'Switch to Light Mode',
+                    themeToDark: 'Switch to Dark Mode',
+                    socYoutube: 'YouTube Channel',
+                    socNedaihaq: 'Nedai Haq YouTube Channel',
+                    socInstagram: 'Instagram Profile',
+                    socX: 'X (Twitter) Account',
+                    socTiktok: 'TikTok Profile',
+                    socEmail: 'Send Email'
+                }
             },
             tr: {
                 dir: 'ltr',
-                pageTitle: 'Üstat Muhammed Ensari | Resmi Profil',
-                name: 'Üstat Muhammed Ensari',
-                subtitle: 'Ehl-i Sünnet Dini Aktivisti',
-                bioP1: 'Üstat Muhammed Ensari; sahih İslam’ı anlatmaya, dini bilinç oluşturmaya ve itikadi ile fikri şüphelere kaynaklara dayalı ilmi cevaplar sunmaya odaklanan bir Ehl-i Sünnet aktivisti ve araştırmacısıdır.',
-                bioP2: 'İlmi çalışmalarında ve fikri değerlendirmelerinde muteber kaynakları, tutarlı istidlali ve İslam öğretilerine dair yanlış algıların düzeltilmesini esas almaktadır.',
+                title: 'Üstad Muhammed Ensari | Resmî Profil',
+                name: 'Üstad Muhammed Ensari',
+                subtitle: 'Ehl-i Sünnet Dinî Aktivisti',
+                bioP1: 'Üstad Muhammed Ensari, sahih ve öz İslam’ın anlatılmasına, dinî bilinçlenmeye ve itikadi ile fikrî şüphelere kaynaklara dayalı cevaplar sunmaya odaklanan Ehl-i Sünnet aktivisti ve araştırmacısıdır.',
+                bioP2: 'İlmî müzakerelerde ve itikadi tartışmalardaki yaklaşımı; muteber kaynaklara dayanmak, mantıki deliller sunmak ve İslam öğretilerine dair yanlış algıları gidererek kamuoyunun farkındalığını artırmaktır.',
                 areasTitle: 'Faaliyet Alanları',
-                area1Title: 'Şia Araştırmaları',
-                area1Desc: 'Şia’nın temel esaslarını, inançlarını ve iddialarını analiz ederek belgelere dayalı ilmi cevaplar sunmak.',
+                area1Title: 'Şiilik Araştırmaları',
+                area1Desc: 'Şia inanç esaslarını ve iddialarını analiz ederek kaynaklara dayalı ilmî cevaplar sunmak.',
                 area2Title: 'Ateizmle Mücadele',
-                area2Desc: 'Ateist akımların ortaya attığı fikri meydan okumaları incelemek ve temel itikadi esasları açıklamak.',
-                area3Title: 'Yanlış Algıların Düzeltilmesi',
-                area3Desc: 'İslam’ın sahih öğretilerini asılsız iddialardan, sapmalardan ve yanlış yorumlardan ayırt etmek.',
+                area2Desc: 'Ateist akımların ortaya attığı şüphelere karşı İslam inanç esaslarını açıklamak.',
+                area3Title: 'Algıların Düzeltilmesi',
+                area3Desc: 'İslam’ın sahih öğretilerini asılsız iddialardan, sapmalardan ve yanlış yorumlardan ayırmak.',
                 socialTitle: 'Sosyal Medya ve İletişim Kanalları',
-                socialSubtitle: 'Sohbetleri, videoları ve yazıları resmi hesaplar üzerinden takip edebilirsiniz',
-                copyright: '© Tüm hakları Üstat Muhammed Ensari resmi sayfasına aittir.',
-                // Tooltips & Social Labels in Turkish
-                tooltipLangFa: 'Farsça Dili',
-                tooltipLangAr: 'Arapça Dili',
-                tooltipLangEn: 'İngilizce Dili',
-                tooltipLangTr: 'Türkçe Dili',
-                tooltipTheme: 'Gece / Gündüz Modunu Değiştir',
-                socialYoutube: 'YouTube',
-                tooltipYoutube: 'YouTube Kanalı',
-                socialNedaihaq: 'Nedai Haq TV',
-                tooltipNedaihaq: 'Nedai Haq TV YouTube Kanalı',
-                socialInstagram: 'Instagram',
-                tooltipInstagram: 'Instagram Sayfası',
-                socialX: 'X (Twitter)',
-                tooltipX: 'X (Twitter) Hesabı',
-                socialTiktok: 'TikTok',
-                tooltipTiktok: 'TikTok Hesabı',
-                socialEmail: 'E-posta',
-                tooltipEmail: 'E-posta: abusaeedansari@gmail.com'
+                socialSubtitle: 'Sohbetleri, videoları ve yazıları resmî hesaplar üzerinden takip edebilirsiniz',
+                socials: {
+                    youtube: 'YouTube',
+                    nedaihaq: 'Nedai Haq TV',
+                    instagram: 'Instagram',
+                    x: 'X (Twitter)',
+                    tiktok: 'TikTok',
+                    email: 'E-posta'
+                },
+                tooltips: {
+                    langFa: 'Farsça Dili',
+                    langAr: 'Arapça Dili',
+                    langEn: 'İngilizce Dili',
+                    langTr: 'Türkçe Dili',
+                    themeToLight: 'Gündüz Moduna Geç',
+                    themeToDark: 'Gece Moduna Geç',
+                    socYoutube: 'YouTube Kanalı',
+                    socNedaihaq: 'Nedai Haq YouTube Kanalı',
+                    socInstagram: 'Instagram Hesabı',
+                    socX: 'X (Twitter) Hesabı',
+                    socTiktok: 'TikTok Hesabı',
+                    socEmail: 'E-posta Gönder'
+                }
             }
         };
 
-        let currentLang = localStorage.getItem('preferredLang') || 'fa';
+        const htmlRoot = document.documentElement;
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const fadeElements = document.querySelectorAll('.lang-fade');
 
-        // Apply Selected Language with Smooth Fade Transition
-        function setLanguage(lang, animate = true) {
-            if (!translations[lang]) return;
-            currentLang = lang;
-            localStorage.setItem('preferredLang', lang);
+        let currentLang = localStorage.getItem('ansari_lang_v1') || 'fa';
+        if (!translations[currentLang]) currentLang = 'fa';
 
-            const data = translations[lang];
-            const fadeElements = document.querySelectorAll('.lang-fade');
+        function syncThemeTooltip() {
+            const isDark = htmlRoot.classList.contains('dark');
+            const t = translations[currentLang];
+            document.getElementById('tooltip-theme').textContent = isDark
+                ? t.tooltips.themeToLight
+                : t.tooltips.themeToDark;
+        }
 
-            // Highlight active language button
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                if (btn.dataset.lang === lang) {
-                    btn.classList.add('bg-emerald-600', 'text-white', 'shadow-md', 'shadow-emerald-600/25');
-                    btn.classList.remove('text-slate-600', 'dark:text-slate-300', 'hover:bg-slate-200/70', 'dark:hover:bg-slate-800/70');
-                } else {
-                    btn.classList.remove('bg-emerald-600', 'text-white', 'shadow-md', 'shadow-emerald-600/25');
-                    btn.classList.add('text-slate-600', 'dark:text-slate-300', 'hover:bg-slate-200/70', 'dark:hover:bg-slate-800/70');
-                }
+        function setTheme(themeName, dismissTip = false) {
+            const isLight = themeName === 'light';
+            htmlRoot.classList.toggle('dark', !isLight);
+            htmlRoot.style.colorScheme = isLight ? 'light' : 'dark';
+            htmlRoot.style.backgroundColor = isLight ? '#f8fafc' : '#090d16';
+            try {
+                localStorage.setItem('ansari_theme_v1', isLight ? 'light' : 'dark');
+            } catch (e) {}
+            syncThemeTooltip();
+
+            if (dismissTip) {
+                const wrapper = themeToggleBtn.closest('.desktop-tooltip-wrapper');
+                themeToggleBtn.blur();
+                if (wrapper) wrapper.classList.add('tooltip-dismissed');
+            }
+        }
+
+        function updateActiveLangButton(lang) {
+            langButtons.forEach((btn) => {
+                const isActive = btn.getAttribute('data-lang') === lang;
+                btn.classList.toggle('bg-emerald-500', isActive);
+                btn.classList.toggle('text-white', isActive);
+                btn.classList.toggle('shadow-md', isActive);
+                btn.classList.toggle('shadow-emerald-500/25', isActive);
+                btn.classList.toggle('text-slate-600', !isActive);
+                btn.classList.toggle('dark:text-slate-300', !isActive);
+                btn.classList.toggle('hover:bg-slate-200/70', !isActive);
+                btn.classList.toggle('dark:hover:bg-slate-800/80', !isActive);
             });
-
-            const applyTexts = () => {
-                document.documentElement.lang = lang;
-                document.documentElement.dir = data.dir;
-                document.title = data.pageTitle;
-
-                // Profile & Bio
-                document.getElementById('profile-name').textContent = data.name;
-                document.getElementById('profile-avatar').alt = data.name;
-                document.getElementById('profile-subtitle').textContent = data.subtitle;
-                document.getElementById('bio-p1').textContent = data.bioP1;
-                document.getElementById('bio-p2').textContent = data.bioP2;
-
-                // Activity Areas
-                document.getElementById('section-areas-title').textContent = data.areasTitle;
-                document.getElementById('area1-title').textContent = data.area1Title;
-                document.getElementById('area1-desc').textContent = data.area1Desc;
-                document.getElementById('area2-title').textContent = data.area2Title;
-                document.getElementById('area2-desc').textContent = data.area2Desc;
-                document.getElementById('area3-title').textContent = data.area3Title;
-                document.getElementById('area3-desc').textContent = data.area3Desc;
-
-                // Social Section & Copyright
-                document.getElementById('social-title').textContent = data.socialTitle;
-                document.getElementById('social-subtitle').textContent = data.socialSubtitle;
-                document.getElementById('footer-copyright').textContent = data.copyright;
-
-                // Desktop Hover Tooltips (Localized to Active Language)
-                document.getElementById('tooltip-lang-fa').textContent = data.tooltipLangFa;
-                document.getElementById('tooltip-lang-ar').textContent = data.tooltipLangAr;
-                document.getElementById('tooltip-lang-en').textContent = data.tooltipLangEn;
-                document.getElementById('tooltip-lang-tr').textContent = data.tooltipLangTr;
-                document.getElementById('tooltip-theme').textContent = data.tooltipTheme;
-
-                // Social Media Desktop Labels & Hover Tooltips
-                document.getElementById('social-label-youtube').textContent = data.socialYoutube;
-                document.getElementById('tooltip-social-youtube').textContent = data.tooltipYoutube;
-                document.getElementById('social-label-nedaihaq').textContent = data.socialNedaihaq;
-                document.getElementById('tooltip-social-nedaihaq').textContent = data.tooltipNedaihaq;
-                document.getElementById('social-label-instagram').textContent = data.socialInstagram;
-                document.getElementById('tooltip-social-instagram').textContent = data.tooltipInstagram;
-                document.getElementById('social-label-x').textContent = data.socialX;
-                document.getElementById('tooltip-social-x').textContent = data.tooltipX;
-                document.getElementById('social-label-tiktok').textContent = data.socialTiktok;
-                document.getElementById('tooltip-social-tiktok').textContent = data.tooltipTiktok;
-                document.getElementById('social-label-email').textContent = data.socialEmail;
-                document.getElementById('tooltip-social-email').textContent = data.tooltipEmail;
-            };
-
-            if (animate) {
-                fadeElements.forEach(el => el.classList.add('switching'));
-                setTimeout(() => {
-                    applyTexts();
-                    fadeElements.forEach(el => el.classList.remove('switching'));
-                }, 200);
-            } else {
-                applyTexts();
-            }
         }
 
-        // Dismiss Active Tooltip Immediately on Click/Tap & Reset on Mouseleave
-        function dismissTooltipOnClick(triggerEl) {
-            triggerEl.blur();
-            const wrapper = triggerEl.closest('.desktop-tooltip-wrapper');
-            if (wrapper) {
-                wrapper.classList.add('tooltip-dismissed');
-            }
+        function applyTranslations(lang) {
+            const t = translations[lang];
+            if (!t) return;
+
+            htmlRoot.setAttribute('lang', lang);
+            htmlRoot.setAttribute('dir', t.dir);
+            document.title = t.title;
+
+            document.getElementById('profile-name').textContent = t.name;
+            document.getElementById('profile-subtitle').textContent = t.subtitle;
+            document.getElementById('bio-p1').textContent = t.bioP1;
+            document.getElementById('bio-p2').textContent = t.bioP2;
+            document.getElementById('section-areas-title').textContent = t.areasTitle;
+
+            document.getElementById('area1-title').textContent = t.area1Title;
+            document.getElementById('area1-desc').textContent = t.area1Desc;
+            document.getElementById('area2-title').textContent = t.area2Title;
+            document.getElementById('area2-desc').textContent = t.area2Desc;
+            document.getElementById('area3-title').textContent = t.area3Title;
+            document.getElementById('area3-desc').textContent = t.area3Desc;
+
+            document.getElementById('social-title').textContent = t.socialTitle;
+            document.getElementById('social-subtitle').textContent = t.socialSubtitle;
+
+            document.getElementById('social-label-youtube').textContent = t.socials.youtube;
+            document.getElementById('social-label-nedaihaq').textContent = t.socials.nedaihaq;
+            document.getElementById('social-label-instagram').textContent = t.socials.instagram;
+            document.getElementById('social-label-x').textContent = t.socials.x;
+            document.getElementById('social-label-tiktok').textContent = t.socials.tiktok;
+            document.getElementById('social-label-email').textContent = t.socials.email;
+
+            document.getElementById('tooltip-lang-fa').textContent = t.tooltips.langFa;
+            document.getElementById('tooltip-lang-ar').textContent = t.tooltips.langAr;
+            document.getElementById('tooltip-lang-en').textContent = t.tooltips.langEn;
+            document.getElementById('tooltip-lang-tr').textContent = t.tooltips.langTr;
+
+            document.getElementById('tooltip-social-youtube').textContent = t.tooltips.socYoutube;
+            document.getElementById('tooltip-social-nedaihaq').textContent = t.tooltips.socNedaihaq;
+            document.getElementById('tooltip-social-instagram').textContent = t.tooltips.socInstagram;
+            document.getElementById('tooltip-social-x').textContent = t.tooltips.socX;
+            document.getElementById('tooltip-social-tiktok').textContent = t.tooltips.socTiktok;
+            document.getElementById('tooltip-social-email').textContent = t.tooltips.socEmail;
+
+            syncThemeTooltip();
+            updateActiveLangButton(lang);
         }
 
-        document.querySelectorAll('.desktop-tooltip-wrapper').forEach(wrapper => {
+        function switchLanguage(newLang, clickedBtn = null) {
+            if (clickedBtn) {
+                clickedBtn.blur();
+                const wrapper = clickedBtn.closest('.desktop-tooltip-wrapper');
+                if (wrapper) wrapper.classList.add('tooltip-dismissed');
+            }
+
+            if (newLang === currentLang) return;
+            currentLang = newLang;
+            try {
+                localStorage.setItem('ansari_lang_v1', newLang);
+            } catch (e) {}
+
+            fadeElements.forEach((el) => el.classList.add('switching'));
+
+            setTimeout(() => {
+                applyTranslations(newLang);
+                fadeElements.forEach((el) => el.classList.remove('switching'));
+            }, 130);
+        }
+
+        // Reset tooltip dismissal when pointer leaves the wrapper
+        document.querySelectorAll('.desktop-tooltip-wrapper').forEach((wrapper) => {
             wrapper.addEventListener('mouseleave', () => {
                 wrapper.classList.remove('tooltip-dismissed');
             });
         });
 
-        // Theme Initialization & Toggle Handler
-        function initTheme() {
-            const savedTheme = localStorage.getItem('preferredTheme');
-            if (savedTheme === 'light') {
-                document.documentElement.classList.remove('dark');
-            } else {
-                document.documentElement.classList.add('dark');
-            }
-        }
-
-        document.getElementById('theme-toggle').addEventListener('click', (e) => {
-            dismissTooltipOnClick(e.currentTarget);
-            const htmlEl = document.documentElement;
-            htmlEl.classList.toggle('dark');
-            const isDark = htmlEl.classList.contains('dark');
-            localStorage.setItem('preferredTheme', isDark ? 'dark' : 'light');
-        });
-
-        // Language Button Click Listeners
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                dismissTooltipOnClick(e.currentTarget);
-                if (btn.dataset.lang !== currentLang) {
-                    setLanguage(btn.dataset.lang, true);
-                }
+        langButtons.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                switchLanguage(btn.getAttribute('data-lang'), btn);
             });
         });
 
-        // Scroll & Load Entrance Animations
-        function initRevealAnimations() {
-            const revealItems = document.querySelectorAll('.reveal-item');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
+        themeToggleBtn.addEventListener('click', () => {
+            const currentlyDark = htmlRoot.classList.contains('dark');
+            setTheme(currentlyDark ? 'light' : 'dark', true);
+        });
+
+        // IntersectionObserver for Smooth Staggered Entrance Animations
+        const revealObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
+                        revealObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 });
+            },
+            { threshold: 0.08, rootMargin: '0px 0px -20px 0px' }
+        );
 
-            revealItems.forEach((item, index) => {
-                setTimeout(() => {
-                    observer.observe(item);
-                }, index * 60);
-            });
-        }
-
-        // Initialize Page
-        window.addEventListener('DOMContentLoaded', () => {
-            initTheme();
-            setLanguage(currentLang, false);
-            initRevealAnimations();
+        document.querySelectorAll('.reveal-item').forEach((el) => {
+            revealObserver.observe(el);
         });
+
+        // Initial Setup
+        applyTranslations(currentLang);
     </script>
 </body>
 </html>
